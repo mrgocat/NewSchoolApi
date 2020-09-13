@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "SchoolApi.gRPC.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/Students.proto";
+import "Protos/Courses.proto";
+
+
+service Enrollments {
+	rpc AddEnrollments(EnrollmentKey) returns (google.protobuf.Empty);
+	rpc RemoveEnrollments(EnrollmentKey) returns (google.protobuf.Empty);
+	rpc GetEnrolledStudents(CourseKey) returns (StudentList);
+	rpc GetEnrolledCourses(StudentKey) returns (CourseList);
+}
+
+message EnrollmentKey {
+	int32 StudentId = 1; 
+	int32 CourseId = 2; 
+}

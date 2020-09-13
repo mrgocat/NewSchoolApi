@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "SchoolApi.gRPC.Protos";
+import "google/protobuf/empty.proto";
+
+service Courses {
+	rpc GetCourse(CourseKey) returns (Course);
+	rpc GetCourses(google.protobuf.Empty) returns (CourseList);
+	rpc AddCourse(Course) returns (CourseKey);
+	rpc UpdateCourse(Course) returns (google.protobuf.Empty);
+	rpc DeleteCourse(CourseKey) returns (google.protobuf.Empty);
+}
+
+message CourseKey {
+	int32 Id = 1; 
+}
+
+message CourseList{
+	repeated Course CourseList = 1;
+}
+message Course {
+	int32 Id = 1;
+	string Name = 2;
+}
